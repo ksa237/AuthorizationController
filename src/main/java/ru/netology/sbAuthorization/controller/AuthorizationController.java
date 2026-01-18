@@ -1,9 +1,6 @@
 package ru.netology.sbAuthorization.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.netology.sbAuthorization.Authorities;
 import ru.netology.sbAuthorization.service.AuthorizationService;
 
@@ -22,4 +19,11 @@ public class AuthorizationController {
     public List<Authorities> getAuthorities(@RequestParam("user") String user, @RequestParam("password") String password) {
         return service.getAuthorities(user, password);
     }
+
+    @PostMapping("/add")
+    private String add(@RequestParam("user") String user, @RequestParam("password") String password) {
+        service.addUser(user, password);
+        return String.format("The user %s has been successfully added to the database", user);
+    }
+
 }

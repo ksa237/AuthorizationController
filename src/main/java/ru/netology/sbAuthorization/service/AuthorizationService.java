@@ -34,4 +34,11 @@ public class AuthorizationService {
     private boolean isEmpty(List<?> str) {
         return str == null || str.isEmpty();
     }
+
+
+    public void addUser(String user, String password) {
+        userRepository.addUser(user, password);
+    }
+
+
 }
